@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            PL/SQL 
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <fieldset>
+        <h1><u><b>PL/SQL</b></u></h1>
+        <p> PL/SQL is a procedural language extension to Structured Query Language (SQL). The purpose of PL/SQL is to combine database language and procedural programming language. The basic unit in PL/SQL is called a block and is made up of three parts: a declarative part, an executable part and an exception-building part.A PL/SQL program that is stored in a database in compiled form and can be called by name is referred to as a stored procedure. A PL/SQL stored procedure that is implicitly started when an INSERT, UPDATE or DELETE statement is issued against an associated table is called a trigger.
+            </p>
+        
+        <ol>
+        <h2>PL/SQL program structure consists of a few basic elements:</h2>
+        <br>
+        <li>DECLARE - This is the optional declaration section where you declare any variables, cursors, or other program objects that you will use in the program.</li>
+        <li>BEGIN - This is the required execution section where the actual program logic is placed.</li>
+        <li>EXCEPTION - This is an optional exception handling section that handles any runtime errors that may occur during the program execution.</li>
+        <li>END - This is the end of the PL/SQL block.</li>
+        </ol>
+        <h2>Programs of PL/SQL: </h2>
+        <ol>
+            <li> HELLO WORLD PROGRAM IN PL/SQL:</li>
+            <pre>
+                <code>
+                DECLARE
+                message varchar2(20):= 'Hello, World!';
+                BEGIN
+                dbms_output.put_line(message);
+                END;
+                </code>
+            </pre>
+            <img src="helloworldoutpt.jpeg" alt="first_pl/sqloutput">
+            <li> SQUARE ROOT PROGRAM IN PL/SQL:</li>
+            <pre>
+                <code>
+                DECLARE 
+                a number; 
+                 PROCEDURE squareNum(x IN OUT number) IS 
+                 BEGIN 
+                   x := x * x; 
+                 END;  
+                 BEGIN 
+                    a:= 23; 
+                    squareNum(a); 
+                    dbms_output.put_line(' Square of (23): ' || a); 
+                 END; 
+                 /
+                </code>
+            </pre>
+            <img src="squareoutput.jpeg" alt="second_pl/sqloutput">
+            <li>Function data PROGRAM IN PL/SQL:</li>
+            <img src="SQLDATA.jpeg" alt="data">
+            <pre>
+                <code>
+                    CREATE OR REPLACE FUNCTION totalCustomers 
+                    RETURN number IS 
+                       total number(2) := 0; 
+                    BEGIN 
+                       SELECT count(*) into total FROM customers; 
+                        
+                       RETURN total; 
+                    END; 
+                    / 
+                </code>
+            </pre>
+            <p>FUNCTION CALLED</p>
+            <pre>
+                <code>
+                DECLARE 
+                    c number(2); 
+                 BEGIN 
+                    c := totalCustomers(); 
+                    dbms_output.put_line('Total no. of Customers: ' || c); 
+                 END; 
+                 /
+                </code>
+            </pre>
+            <img src="output_sql.jpeg" alt="third_pl/sqloutput">
+        </ol>
+        <a href="pl_sql2.html" alt="next page" class="button"> NEXT PAGE</a>
+    </fieldset>
+    </body>
+</html>
